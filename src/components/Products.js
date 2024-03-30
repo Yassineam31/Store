@@ -3,23 +3,27 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
 import Spinner from 'react-bootstrap/Spinner';
-
 const Products = () => {
     const [data, setData] = useState([])
-    const [filter, setFilter] = useState(data)
+    const [filter, setFilter] = useState([])
     const [loading, setLoading] = useState(false)
+
     useEffect(() => {
         getProducts()
     }, [])
+
+    useEffect(() => {
+        setFilter(data);
+    }, [data])
 
     const getProducts = async () => {
         setLoading(true)
         const response = await fetch("https://fakestoreapi.com/products")
 
         setData(await response.json())
-        setFilter(data)
         setLoading(false)
     }
+
     const Loading = () => {
         return (
             <>
@@ -35,6 +39,7 @@ const Products = () => {
             </>
         )
     }
+
     const filterProduct = (cat) => {
         const updatedItems = data.filter((item) => item.category === cat)
         setFilter(updatedItems)
@@ -44,11 +49,11 @@ const Products = () => {
         return (
             <>
                 <div className="buttons">
-                    <Button onClick={() => setFilter(data)} className='me-2' variant="outline-dark">All Brands</Button>
-                    <Button onClick={() => filterProduct("men's clothing")} className='me-2' variant="outline-dark">Men</Button>
-                    <Button onClick={() => filterProduct("women's clothing")} className='me-2' variant="outline-dark">Women</Button>
-                    <Button onClick={() => filterProduct("jewelery")} className='me-2' variant="outline-dark">Jewelery</Button>
-                    <Button onClick={() => filterProduct("electronics")} className='me-2' variant="outline-dark">Electronics</Button>
+                    <Button onClick={() => setFilter(data)} className='me-2' variant="outline-dark">Tous</Button>
+                    <Button onClick={() => filterProduct("men's clothing")} className='me-2' variant="outline-dark">Hommes</Button>
+                    <Button onClick={() => filterProduct("women's clothing")} className='me-2' variant="outline-dark">Femmes</Button>
+                    <Button onClick={() => filterProduct("jewelery")} className='me-2' variant="outline-dark">Bijoux</Button>
+                    <Button onClick={() => filterProduct("electronics")} className='me-2' variant="outline-dark">Electroniques</Button>
                 </div>
                 {filter.map((item) => {
                     return (
@@ -58,9 +63,9 @@ const Products = () => {
                                 <Card.Body>
                                     <Card.Title>{item.title.substring(0, 12)}</Card.Title>
                                     <Card.Text className='fw-bold'>
-                                        $ {item.price}
+                                         {item.price} Dhs
                                     </Card.Text>
-                                    <Link to={`/products/${item.id}`}> <Button variant="dark">Buy Now</Button></Link>
+                                    <Link to={`/products/${item.id}`}> <Button variant="dark">Acheter</Button></Link>
                                 </Card.Body>
                             </Card>
                         </div>
@@ -69,20 +74,23 @@ const Products = () => {
             </>
         )
     }
+
     return (
         <div>
             <div className="container mt-5 pb-5">
                 <div className="row">
                     <div className="col-lg-12">
-                        <h1 className='display-6 '>All Products</h1>
+                        <h1 className='display-6 '>Nos Produits</h1>
                         <hr />
                         <div className="row justify-content-center">
                             {loading ? <Loading /> : <ShowProducts />}
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>   
+               
         </div>
+        
     )
 }
 
