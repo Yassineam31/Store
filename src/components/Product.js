@@ -14,7 +14,7 @@ const Product = () => {
 
     const send = (item) => {
         dispatch(ADD(item))
-        alert("Item added successfully")
+        alert("Article ajouté avec succès")
     }
     useEffect(() => {
         getProduct()
@@ -46,7 +46,7 @@ const Product = () => {
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-6 mt-5">
-                            <img src={product.image} alt={product.image} height={400} width={500} />
+                            <img src={product.image} alt={product.image} height={550} width={500} />
                         </div>
                         <div className="col-lg-6 mt-5">
                             <h4 className='texr-uppercase'>{product.category}</h4>
