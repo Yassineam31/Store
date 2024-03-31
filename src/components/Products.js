@@ -65,7 +65,7 @@ const Products = () => {
                                     <Card.Text className='fw-bold'>
                                          {item.price} Dhs
                                     </Card.Text>
-                                    <Link to={`/products/${item.id}`}> <Button variant="dark">Acheter</Button></Link>
+                                    <Link to={`/products/${item.id}`}> <Button variant="dark">Voir</Button></Link>
                                 </Card.Body>
                             </Card>
                         </div>

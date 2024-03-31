@@ -96,7 +96,9 @@ const NavBarComp = () => {
           })}
         </tbody>
       </table>
-      <div className="text-end me-3 mt-3">Total: {calculateTotal()} Dhs</div>
+      <div className="text-end me-3 mt-3">Total: {calculateTotal()} Dhs
+      <button className="btn btn-outline-dark m-3">Payer</button>
+      </div>
     </Popover>
   );
 
@@ -110,7 +112,7 @@ const NavBarComp = () => {
           <Nav className="me-auto">
             <Nav.Link className="nav-link nav-link-ltr">
               <Link style={{ textDecoration: "none" }} to="/">
-                Produits
+                Accueil
               </Link>
             </Nav.Link>
             <Nav.Link className="nav-link nav-link-ltr">

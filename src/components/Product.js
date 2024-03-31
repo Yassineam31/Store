@@ -52,7 +52,7 @@ const Product = () => {
                             <h4 className='texr-uppercase'>{product.category}</h4>
                             <h1 className='display-5'>{product.title}</h1>
                             <p className='fw-bolder'>Rating {product.rating && product.rating.rate}</p>
-                            <h3>$ {product.price}</h3>
+                            <h3>{product.price} Dhs</h3>
                             <p>{product.description}</p>
                             <Button onClick={() => send(product)} variant="dark">Ajouter au panier</Button>
                             
